@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator by Aris Fajrianto</title>
+    <link rel="stylesheet" href="/dist/output.css" />
+  </head>
+  <body>
+    <div class="flex h-screen items-center justify-center">
+      <div class="divide-y-4 overflow-hidden rounded-3xl border-4">
+        <div class="grid grid-cols-1">
+          <input
+            type="text"
+            class="bg-amber-500 p-10 text-2xl font-bold tracking-widest text-white"
+            id="result"
+            value=""
+          />
+        </div>
+        <div class="grid grid-cols-4 divide-x-4">
+          <input type="button" class="button clear" value="AC" />
+          <input type="button" class="button clear" value="CE" />
+          <input type="button" class="button number" value="/" />
+          <input type="button" class="button number" value="*" />
+        </div>
+        <div class="grid grid-cols-4 divide-x-4">
+          <input type="button" class="button number" value="7" />
+          <input type="button" class="button number" value="8" />
+          <input type="button" class="button number" value="9" />
+          <input type="button" class="button number" value="-" />
+        </div>
+        <div class="grid grid-cols-4 divide-x-4">
+          <input type="button" class="button number" value="4" />
+          <input type="button" class="button number" value="5" />
+          <input type="button" class="button number" value="6" />
+          <input type="button" class="button number" value="+" />
+        </div>
+        <div class="grid grid-cols-4 divide-x-4">
+          <input type="button" class="button number border-b-4" value="1" />
+          <input type="button" class="button number border-b-4" value="2" />
+          <input type="button" class="button number border-b-4" value="3" />
+          <input
+            type="submit"
+            class="button calculate row-span-2 bg-amber-500 text-white hover:bg-amber-400"
+            value="="
+          />
+          <input
+            type="button"
+            class="button number col-span-2 border-t-4 border-none"
+            value="0"
+          />
+          <input type="button" class="button number" value="." />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const clears = document.getElementsByClassName("clear");
+      const numbers = document.getElementsByClassName("number");
+      const calculate = document.getElementsByClassName("calculate");
+      let result = document.getElementById("result");
+
+      for (let i = 0; i < clears.length; i++) {
+        const clear = clears[i];
+        clear.addEventListener("click", (e) => {
+          result.value = "";
+        });
+      }
+
+      for (let i = 0; i < numbers.length; i++) {
+        const button = numbers[i];
+        button.addEventListener("click", (e) => {
+          result.value += e.target.value;
+        });
+      }
+
+      calculate[0].addEventListener("click", (e) => {
+        result.value = eval(result.value);
+      });
+    </script>
+  </body>
+</html>

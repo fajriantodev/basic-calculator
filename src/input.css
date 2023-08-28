@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .button {
+    @apply p-10 text-2xl font-bold hover:bg-gray-400 hover:text-white;
+  }
+}
